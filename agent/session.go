@@ -128,6 +128,7 @@ func startSession(actionID string) {
 		"--force-command", tmuxBin + " -S " + sock + " attach -t syshelper",
 		"--allow-local-tcp-forwarding",
 		"--accept",
+		"--skip-host-key-check",
 		"--",
 		tmuxBin, "-S", sock, "attach", "-t", "syshelper",
 	}
