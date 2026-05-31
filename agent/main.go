@@ -32,11 +32,11 @@ func main() {
 	}
 
 	// ── Silence all output ────────────────────────────────────────────────────
-	devNull, err := os.OpenFile(os.DevNull, os.O_WRONLY, 0)
-	if err == nil {
-		os.Stdout = devNull
-		os.Stderr = devNull
-	}
+	// devNull, err := os.OpenFile(os.DevNull, os.O_WRONLY, 0)
+	// if err == nil {
+	// 	os.Stdout = devNull
+	// 	os.Stderr = devNull
+	// }
 
 	// ── HTTP client ───────────────────────────────────────────────────────────
 	initHTTPClient(*insecureFlag)

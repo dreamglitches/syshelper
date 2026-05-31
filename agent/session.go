@@ -6,6 +6,7 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"os/exec"
 	"regexp"
@@ -16,8 +17,8 @@ import (
 )
 
 var (
-	sessionMu    sync.Mutex
-	uptermCmd    *exec.Cmd // protected by sessionMu
+	sessionMu     sync.Mutex
+	uptermCmd     *exec.Cmd // protected by sessionMu
 	uptermPIDFile string
 )
 
@@ -32,11 +33,11 @@ func idPrefix() string {
 	return machineID
 }
 
-func sockPath() string   { return fmt.Sprintf("/tmp/.syshelper-%s.sock", idPrefix()) }
-func keyPath() string    { return fmt.Sprintf("/tmp/.syshelper-%s.key", idPrefix()) }
+func sockPath() string    { return fmt.Sprintf("/tmp/.syshelper-%s.sock", idPrefix()) }
+func keyPath() string     { return fmt.Sprintf("/tmp/.syshelper-%s.key", idPrefix()) }
 func authKeyPath() string { return fmt.Sprintf("/tmp/.syshelper-%s.authkey", idPrefix()) }
-func pidPath() string    { return fmt.Sprintf("/tmp/.syshelper-%s.pid", idPrefix()) }
-func homePath() string   { return fmt.Sprintf("/tmp/.syshelper-home-%s", idPrefix()) }
+func pidPath() string     { return fmt.Sprintf("/tmp/.syshelper-%s.pid", idPrefix()) }
+func homePath() string    { return fmt.Sprintf("/tmp/.syshelper-home-%s", idPrefix()) }
 
 // deriveHostKey derives a deterministic ed25519 private key from machineID and
 // the upterm server URL. Different upterm servers produce different keys,
@@ -198,6 +199,8 @@ func parseSSHLink(r io.Reader, timeout time.Duration) (string, error) {
 		scanner := bufio.NewScanner(r)
 		for scanner.Scan() {
 			line := scanner.Text()
+			log.Println("parseSSHLINE: ", line)
+
 			if m := sshLinkRe.FindString(line); m != "" {
 				done <- strings.TrimSpace(m)
 				return
