@@ -124,7 +124,7 @@ func startSession(actionID string) {
 		"host",
 		"--server", server,
 		"--private-key", keyPath(),
-		"--authorized-key", authKeyPath(),
+		"--authorized-keys", authKeyPath(),
 		"--force-command", tmuxBin + " -S " + sock + " attach -t syshelper",
 		"--allow-local-tcp-forwarding",
 		"--accept",
