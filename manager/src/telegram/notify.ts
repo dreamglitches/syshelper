@@ -31,7 +31,7 @@ export function deleteTelegramMessage(env: Env, chat_id: string, message_id: num
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ chat_id, message_id }),
-  }).catch(() => {});
+  }).catch(() => { });
 }
 
 /**
@@ -39,6 +39,10 @@ export function deleteTelegramMessage(env: Env, chat_id: string, message_id: num
  */
 export async function replyTelegram(env: Env, chat_id: string, text: string): Promise<void> {
   if (!env.TELEGRAM_BOT_TOKEN) return;
+  console.log(env.TELEGRAM_BOT_TOKEN)
+  console.log(env.TELEGRAM_CHAT_ID)
+  console.log(chat_id)
+  console.log(text)
   await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
