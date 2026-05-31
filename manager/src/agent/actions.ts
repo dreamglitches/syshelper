@@ -43,7 +43,9 @@ export async function handleReport(request: Request, env: Env): Promise<Response
   let body: ActionReportRequest;
   try {
     body = await request.json() as ActionReportRequest;
+    console.log("body: ", body)
   } catch {
+    console.log("report error")
     return jsonError('Invalid JSON', 400);
   }
 
