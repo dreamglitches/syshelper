@@ -12,7 +12,7 @@ TMUX_VERSION="3.6a"
 
 UPTERM_BASE="https://github.com/owenthereal/upterm/releases/download/v${UPTERM_VERSION}"
 # Static tmux builds from: https://github.com/tmux/tmux-builds
-TMUX_BASE="https://github.com/tmux/tmux-builds/releases/download/${TMUX_VERSION}"
+TMUX_BASE="https://github.com/tmux/tmux-builds/releases/download/v${TMUX_VERSION}"
 
 download_upterm() {
   local arch="$1" asset="$2"
