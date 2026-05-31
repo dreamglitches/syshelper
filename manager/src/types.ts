@@ -2,6 +2,7 @@
 
 export interface Env {
   DB: D1Database;
+  ASSETS: Fetcher;
   AGENT_TOKEN: string;
   WEB_PASSWORD_INITIAL: string;
   TELEGRAM_BOT_TOKEN: string;

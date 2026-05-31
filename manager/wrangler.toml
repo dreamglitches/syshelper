@@ -3,17 +3,26 @@ main = "src/index.ts"
 compatibility_date = "2024-01-01"
 compatibility_flags = ["nodejs_compat"]
 
+[observability.logs]
+enabled = true
+invocation_logs = true
+
+[assets]
+directory = "../web/dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "syshelper"
-database_id = "FILL_AFTER_WRANGLER_D1_CREATE"
+database_id = "c68ca14e-47db-4b30-a871-ec62ffc8bb1c"
 
 [triggers]
 crons = ["*/30 * * * *"]
 
 # Secrets — set via `wrangler secret put <NAME>`:
 #   AGENT_TOKEN              — fleet-wide bearer token for agents
-#   WEB_PASSWORD_INITIAL     — bcrypt-hashed on first cold start
+#   WEB_PASSWORD_INITIAL     — plain text password, hashed on first cold start
 #   TELEGRAM_BOT_TOKEN       — from BotFather
 #   TELEGRAM_CHAT_ID         — your personal chat ID (string)
 #   TELEGRAM_WEBHOOK_SECRET  — random secret for webhook verification

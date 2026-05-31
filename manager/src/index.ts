@@ -1,5 +1,4 @@
 import type { Env } from './types';
-import { jsonError } from './db';
 import { agentAuth } from './middleware/agentAuth';
 import { webAuth } from './middleware/webAuth';
 import { ensureAuthInit, handleLogin, handleLogout, handleChangePassword } from './operator/auth';
@@ -104,7 +103,10 @@ export default {
       }
     }
 
-    return jsonError('Not found', 404);
+    // Fallback: serve static assets. With not_found_handling = "single-page-application"
+    // the ASSETS binding automatically serves index.html for unknown paths,
+    // enabling React client-side routing.
+    return env.ASSETS.fetch(request);
   },
 
   // ─── Cron handler ──────────────────────────────────────────────────────────

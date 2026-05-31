@@ -1,1 +1,7 @@
 node_modules
+# Ignore local Wrangler state and build cache
+.wrangler/
+
+# Ignore production build outputs
+dist/
+.vars.local
