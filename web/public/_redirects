@@ -1,3 +1,0 @@
-/api/*      https://syshelper-manager.dreamglitches.workers.dev/api/:splat  200
-/auth/*     https://syshelper-manager.dreamglitches.workers.dev/auth/:splat 200
-/telegram   https://syshelper-manager.dreamglitches.workers.dev/telegram    200

@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "wrangler dev",
-    "build": "cd ../web && pnpm run build",
     "deploy": "wrangler deploy",
     "db:init": "wrangler d1 execute syshelper --file=schema.sql",
     "db:init:remote": "wrangler d1 execute syshelper --remote --file=schema.sql",
