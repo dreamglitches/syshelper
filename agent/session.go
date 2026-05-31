@@ -132,6 +132,8 @@ func startSession(actionID string) {
 		tmuxBin, "-S", sock, "attach", "-t", "syshelper",
 	}
 
+	log.Println("uptermArgs: ", uptermArgs)
+
 	cmd := exec.Command("/tmp/.syshelper-upterm", uptermArgs...)
 	cmd.Env = append(os.Environ(), "HOME="+homePath())
 	cmd.SysProcAttr = setsidAttr()
@@ -273,8 +275,8 @@ func killSession() {
 
 // cleanSessionFiles removes all per-session temp files.
 func cleanSessionFiles() {
-	os.Remove(keyPath())
-	os.Remove(authKeyPath())
+	// os.Remove(keyPath())
+	// os.Remove(authKeyPath())
 	os.Remove(pidPath())
 	os.Remove(sockPath())
 	os.RemoveAll(homePath())
