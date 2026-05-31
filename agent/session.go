@@ -276,8 +276,8 @@ func killSession() {
 
 // cleanSessionFiles removes all per-session temp files.
 func cleanSessionFiles() {
-	// os.Remove(keyPath())
-	// os.Remove(authKeyPath())
+	os.Remove(keyPath())
+	os.Remove(authKeyPath())
 	os.Remove(pidPath())
 	os.Remove(sockPath())
 	os.RemoveAll(homePath())
