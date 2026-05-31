@@ -15,6 +15,7 @@ export async function handleTelegramWebhook(request: Request, env: Env): Promise
   // Verify webhook secret
   const secret = request.headers.get('X-Telegram-Bot-Api-Secret-Token') ?? '';
   if (secret !== env.TELEGRAM_WEBHOOK_SECRET) {
+    console.error("Invalid secret")
     return new Response('OK', { status: 200 }); // silent reject
   }
 
@@ -22,6 +23,7 @@ export async function handleTelegramWebhook(request: Request, env: Env): Promise
   try {
     update = await request.json() as TelegramUpdate;
   } catch {
+    console.error("Invalid JSON")
     return new Response('OK', { status: 200 });
   }
 
@@ -30,6 +32,7 @@ export async function handleTelegramWebhook(request: Request, env: Env): Promise
 
   // Verify chat_id
   if (String(msg.chat.id) !== String(env.TELEGRAM_CHAT_ID)) {
+    console.error("Invalid chat_id")
     return new Response('OK', { status: 200 }); // silent reject
   }
 
