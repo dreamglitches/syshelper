@@ -1,0 +1,19 @@
+name = "syshelper-manager"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "syshelper"
+database_id = "FILL_AFTER_WRANGLER_D1_CREATE"
+
+[triggers]
+crons = ["*/30 * * * *"]
+
+# Secrets — set via `wrangler secret put <NAME>`:
+#   AGENT_TOKEN              — fleet-wide bearer token for agents
+#   WEB_PASSWORD_INITIAL     — bcrypt-hashed on first cold start
+#   TELEGRAM_BOT_TOKEN       — from BotFather
+#   TELEGRAM_CHAT_ID         — your personal chat ID (string)
+#   TELEGRAM_WEBHOOK_SECRET  — random secret for webhook verification

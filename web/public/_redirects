@@ -1,0 +1,3 @@
+/api/*      https://syshelper-manager.workers.dev/api/:splat  200
+/auth/*     https://syshelper-manager.workers.dev/auth/:splat 200
+/telegram   https://syshelper-manager.workers.dev/telegram    200

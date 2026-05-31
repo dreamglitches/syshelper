@@ -1,0 +1,12 @@
+[Unit]
+Description=Syshelper Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/syshelper
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
